@@ -62,7 +62,8 @@ def step_size(s):
     pre: s is a lowercase string.
     post: Returns the calculated step size as an integer based on the provided string.
     """
-    return STEP_SIZE_CONSTANT - (s % STEP_SIZE_CONSTANT)
+    hash_num = hash_word(s,STEP_SIZE_CONSTANT)
+    return STEP_SIZE_CONSTANT - (hash_num % STEP_SIZE_CONSTANT)
 
 def insert_word(s, hash_table):
     """
