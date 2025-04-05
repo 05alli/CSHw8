@@ -62,9 +62,8 @@ def step_size(s):
     pre: s is a lowercase string.
     post: Returns the calculated step size as an integer based on the provided string.
     """
-    hash_value = hash(s)
-    
-    return STEP_SIZE_CONSTANT - (hash_value % STEP_SIZE_CONSTANT)
+    size = STEP_SIZE_CONSTANT - (hash_word(s, STEP_SIZE_CONSTANT) % STEP_SIZE_CONSTANT)
+    return size
 
 def insert_word(s, hash_table):
     """
@@ -119,7 +118,7 @@ def is_reducible(s, hash_table, hash_memo):
     if len(s) == 1:
         if s == 'a' or s == 'i' or s == 'o':
             return True
-        else: 
+        else:
             return False
     elif find_word(s,hash_memo):
         return True
@@ -130,9 +129,7 @@ def is_reducible(s, hash_table, hash_memo):
             insert_word(s, hash_memo)
             return True
     return False
-    
 
-# TODO: Modify this function. You may delete this comment when you are done.
 def get_longest_words(string_list):
     """
     Finds longest words from a list.
@@ -144,19 +141,16 @@ def get_longest_words(string_list):
     #for word in string_list:
         #if len(word) > max:
            # max = len(word)
-    
+
     max_len = max(string_list, key= len)
 
     long_words = []
     for word in string_list:
         if len(word) == max_len:
             long_words.append(word)
-    
+
     return long_words
 
-
-
-# TODO: Modify this function. You may delete this comment when you are done.
 def main():
     """The main function that calculates the longest reducible words"""
     #Creating empty list
